@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# macOS helper script to run student tests, autograders, or demos.
+
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+usage() {
+    cat <<'EOF'
+Usage: run_assignment.sh <assignment_name> <action>
+
+Actions:
+  test   - run exercises/student/student_<assignment>.py
+  grade  - run grade/run_<assignment>_autograder.py
+  demo   - run answer/<assignment>.py
+EOF
+    exit 1
+}
+
+[ $# -eq 2 ] || usage
+
+ASSIGNMENT="$1"
+ACTION="$(printf '%s' "$2" | tr '[:upper:]' '[:lower:]')"
+
+PYTHONPATH_VALUE="${ROOT_DIR}${PYTHONPATH:+:$PYTHONPATH}"
+
+case "$ACTION" in
+    test)
+        STUDENT_FILE="$ROOT_DIR/exercises/student/${ASSIGNMENT}/main.py"
+        [ -f "$STUDENT_FILE" ] || {
+            echo "Student file not found: $STUDENT_FILE" >&2
+            exit 1
+        }
+        PYTHONPATH="$PYTHONPATH_VALUE" python -m "exercises.student.${ASSIGNMENT}.main"
+        ;;
+    grade)
+        AUTOGRADER_FILE="$ROOT_DIR/grade/run_${ASSIGNMENT}_autograder.py"
+        [ -f "$AUTOGRADER_FILE" ] || {
+            echo "Autograder file not found: $AUTOGRADER_FILE" >&2
+            exit 1
+        }
+        PYTHONPATH="$PYTHONPATH_VALUE" python -m "grade.run_${ASSIGNMENT}_autograder"
+        ;;
+    demo)
+        DEMO_FILE="$ROOT_DIR/answer/${ASSIGNMENT}.py"
+        [ -f "$DEMO_FILE" ] || {
+            echo "Demo file not found: $DEMO_FILE" >&2
+            exit 1
+        }
+        PYTHONPATH="$PYTHONPATH_VALUE" python "$DEMO_FILE"
+        ;;
+    *)
+        usage
+        ;;
+esac
