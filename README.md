@@ -4,17 +4,13 @@ Practice-focused exercises paired with a lightweight autograder and answer key.
 
 ## Table of Contents
 
-1. [Intro to Classes: BankAccount](#intro-to-classes-bankaccount)
-2. [Running the Exercises](#running-the-exercises)
-
-## Intro to Classes: BankAccount
-
-- **Student starter**: `exercises/student/student_bank.py`
-- **Reference grader**: `exercises/reference/bank.py`
-- **Answer/demo**: `answer/bank.py`
-
-Students implement a `BankAccount` class, practice object instantiation, and then
-finish a `solve()` helper that powers the autograder tests.
+- [Python Exercises](#python-exercises)
+  - [Table of Contents](#table-of-contents)
+  - [Running the Exercises](#running-the-exercises)
+    - [Helper script](#helper-script)
+    - [Manual commands (DO NOT USE)](#manual-commands-do-not-use)
+  - [Exercises](#exercises)
+    - [Intro to Classes: BankAccount](#intro-to-classes-bankaccount)
 
 ## Running the Exercises
 
@@ -28,21 +24,21 @@ so imports work when invoked from the shell.
 
 ```bash
 # Syntax
-./run_assignment.sh <assignment_name> <test|grade|demo>
+./run <assignment_name> <test|grade|demo>
 
 # Examples for the Bank assignment
-./run_assignment.sh bank test   # run student module (local tests)
-./run_assignment.sh bank grade  # run official autograder
-./run_assignment.sh bank demo   # run the answer/demo script
+./run bank test   # run student module (local tests)
+./run bank grade  # run official autograder
+./run bank demo   # run the answer/demo script
 ```
 
 If needed, make the script executable once:
 
 ```bash
-chmod +x run_assignment.sh
+chmod +x run
 ```
 
-### Manual commands
+### Manual commands (DO NOT USE)
 
 You can run the same targets without the helper script:
 
@@ -51,3 +47,13 @@ PYTHONPATH=. python -m exercises.student.student_bank
 PYTHONPATH=. python -m grade.run_bank_autograder
 PYTHONPATH=. python answer/bank.py
 ```
+
+## Exercises
+
+### Intro to Classes: BankAccount
+
+- **Student starter**: [`exercises/student/bank/main.py`](exercises/student/bank/main.py) (click on the path to get started)
+- **Reference grader**: `exercises/reference/bank.py`
+- **Answer/demo**: `answer/bank.py`
+
+Implement a `BankAccount` class, practice object instantiation.
