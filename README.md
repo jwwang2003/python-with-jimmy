@@ -10,6 +10,7 @@ Practice-focused exercises paired with a lightweight autograder and answer key.
     - [Helper script](#helper-script)
     - [Manual commands (DO NOT USE)](#manual-commands-do-not-use)
   - [Exercises](#exercises)
+    - [Classes: Triangle Area](#classes-triangle-area)
     - [Recursion: Fibonacci Numbers (fib)](#recursion-fibonacci-numbers-fib)
     - [Intro to Classes: BankAccount](#intro-to-classes-bankaccount)
 
@@ -31,6 +32,9 @@ so imports work when invoked from the shell.
 ./run fib test    # run Fibonacci recursion student module
 ./run fib grade   # run official autograder
 ./run fib demo    # run the answer/demo script
+./run triangle test   # run triangle student module (local tests)
+./run triangle grade  # run official autograder
+./run triangle demo   # run the answer/demo script
 ./run bank test   # run bank student module (local tests)
 ./run bank grade  # run official autograder
 ./run bank demo   # run the answer/demo script
@@ -53,6 +57,14 @@ PYTHONPATH=. python answer/bank.py
 ```
 
 ## Exercises
+
+### Classes: Triangle Area
+
+- **Student starter**: [`exercises/student/triangle/main.py`](exercises/student/triangle/main.py)
+- **Reference grader**: `exercises/reference/triangle.py`
+- **Answer/demo**: `answer/triangle.py`
+
+Build a `Triangle` class with `area()` and a helpful `__str__` override.
 
 ### Recursion: Fibonacci Numbers (fib)
 
