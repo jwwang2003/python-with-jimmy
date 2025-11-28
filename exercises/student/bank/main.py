@@ -18,7 +18,8 @@ class BankAccount:
     def __init__(self, owner: str, starting_balance: Money = 0):
         # store owner
         # store starting balance
-        
+        self.owner = owner
+        self.balance = starting_balance
         # DO NOT MODIFY BELOW
         pass
 
@@ -29,7 +30,7 @@ class BankAccount:
     # Use addition + assignment.
     def deposit(self, amount: Money) -> None:
         # your code here
-        
+        self.balance += amount
         # DO NOT MODIFY BELOW
         pass
 
@@ -41,7 +42,11 @@ class BankAccount:
     # Use an if statement and return True/False.
     def withdraw(self, amount: Money) -> bool:
         # your code here
-        
+        if self.balance >= amount:
+            self.balance -= amount
+            return True
+        else:
+            return False
         # DO NOT MODIFY BELOW
         pass
 
@@ -50,7 +55,7 @@ class BankAccount:
     # Return an f-string that includes owner and balance.
     def get_summary(self) -> str:
         # your code here
-        
+        return f"Owner:{self.owner}, Balance:{self.balance}"
         # DO NOT MODIFY BELOW
         pass
 
@@ -61,27 +66,25 @@ if __name__ == "__main__":
     # - account1 with owner "Alice" and starting_balance 100
     # - account2 with owner "Bob" and starting_balance 50
     # Hint: account1 = BankAccount("Alice", 100)
-    account1 =                  # Fill in here!
-    account2 =                  # Fill in here!
+    account1 = BankAccount("Alice",100)                 # Fill in here!
+    account2 = BankAccount("Bob",50)                 # Fill in here!
 
     # TODO 6: Call deposit and withdraw methods:
     # - deposit 25 into Alice's account
     # - withdraw 10 from Bob's account    
     # Fill in here! [Start]
-
+    account1.deposit(25)
+    account2.withdraw(10)
     # [End]
     
     # TODO 7: Print summaries for BOTH accounts using the built-in method get_summary()
-    print(...)
-    print(...)
+    print(account1.get_summary())
+    print(account2.get_summary())
 
     # (Optional) TODO 8: Try to withdraw 1,000,000 from Alice's account and
     # print whether it worked, and the final summary.
-    success = account1.withdraw(...)
-    print("Was large withdrawal successful?", success)
-    print(...)
-
-
+    # success = account1.witwithdraw()  print("Was large withdrawal successful?", success)
+    # print(...account1.get_summary())
 # DO NOT MODIFY ANY CODE BELOW THIS POINT
 
 def solve(test_case: TestCase) -> Money:
